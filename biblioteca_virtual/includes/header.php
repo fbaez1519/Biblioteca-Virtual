@@ -483,6 +483,7 @@ $userName = $_SESSION['user_name'] ?? 'Usuario';
     <!-- ========================================== -->
     <main class="main-content">
         <div class="container">
+        <?php displayAlert(); ?>  
 
 <script>
     // ==========================================
