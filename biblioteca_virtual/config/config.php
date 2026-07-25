@@ -13,7 +13,7 @@ ini_set('session.cookie_secure', 0); // Cambiar a 1 en producción con HTTPS
 
 // Constantes del sistema
 define('SITE_NAME', 'Biblioteca Virtual');
-define('SITE_URL', 'http://localhost:8080/biblioteca_virtual/');
+define('SITE_URL', 'http://localhost/Biblioteca-Virtual-main/biblioteca_virtual/');
 define('SITE_VERSION', '1.0.0');
 
 // Configuración de rutas

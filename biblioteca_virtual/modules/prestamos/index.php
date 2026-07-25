@@ -84,6 +84,12 @@ include '../../includes/header.php';
         <a href="new.php" class="btn btn-primary">➕ Nuevo Préstamo</a>
     </div>
 
+    <?php $alert = getAlert(); if ($alert): ?>
+        <div class="alert alert-<?php echo $alert['type']; ?>">
+            <?php echo e($alert['message']); ?>
+        </div>
+    <?php endif; ?>
+
     <!-- Filtros -->
     <div class="filters-section">
         <form method="GET" action="" class="filters-form">
@@ -164,7 +170,7 @@ include '../../includes/header.php';
                                     </a>
                                 <?php endif; ?>
                                 <?php if ($isAdmin && $p['estado'] == 'activo'): ?>
-                                    <a href="?action=cancel&id=<?php echo $p['id_prestamo']; ?>" 
+                                    <a href="cancel.php?id=<?php echo $p['id_prestamo']; ?>" 
                                        class="btn btn-sm btn-danger"
                                        onclick="return confirm('¿Cancelar préstamo?')">
                                         ⛔ Cancelar
@@ -189,4 +195,162 @@ include '../../includes/header.php';
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-header h1 {
+    font-size: 1.8rem;
+    color: #2d3436;
+}
+
+.page-header p {
+    color: #636e72;
+    margin-top: 0.2rem;
+}
+
+.filters-section {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+}
+
+.filters-form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+.filter-input,
+.filter-select {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: 1px solid #dfe6e9;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+    outline: none;
+    border-color: #6C5CE7;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+}
+
+.empty-state {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.empty-state p {
+    color: #b2bec3;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+.loans-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.loans-table th {
+    text-align: left;
+    padding: 1rem;
+    background: #f8f9fc;
+    color: #636e72;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.loans-table td {
+    padding: 1rem;
+    border-top: 1px solid #f0f0f0;
+    vertical-align: top;
+    font-size: 0.9rem;
+}
+
+.loans-table small {
+    display: block;
+    color: #b2bec3;
+    font-size: 0.78rem;
+    margin-top: 0.2rem;
+}
+
+.text-muted {
+    color: #b2bec3;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-activo {
+    background: #e8f8ed;
+    color: #00B894;
+}
+
+.status-devuelto {
+    background: #e8f0fe;
+    color: #4169E1;
+}
+
+.status-vencido {
+    background: #fde8e8;
+    color: #E17055;
+}
+
+.status-cancelado {
+    background: #f0f0f0;
+    color: #636e72;
+}
+
+.btn-success {
+    background: #00B894;
+    color: white;
+}
+
+.btn-danger {
+    background: #E17055;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filters-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+</style>
+
+<?php include '../../includes/footer.php'; ?>

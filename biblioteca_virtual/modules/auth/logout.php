@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-header('Location: http://localhost:8080/biblioteca_virtual/modules/auth/login.php');
+header('Location: ' . SITE_URL . 'modules/auth/login.php');
 exit;
 ?>
